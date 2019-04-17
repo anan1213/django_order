@@ -1,0 +1,71 @@
+{% extends 'url/base.html' %}
+{% load static %}
+{% block content %}
+<!--
+<table class="table mt-5">
+  <form method="POST" action="{% url 'url:delete_url' %}">
+  <thead class="thead">
+    <tr>
+      <th><a href="{% url 'url:index' %}"><img src="{% static "url/folder.png" %}"></a></th>
+      <th>{{ title_name }}</th>
+      <th></th>
+      <th><div class="text-right"><a href="{% url 'url:create_url' %}"><img src="{% static "url/plus.png" %}"></a></div></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for url in url_list %}
+    <tr>
+      <td scope="row"><img src="{% static "url/link.png" %}" ></td>
+      <td><a href="{{ url.site }}" target="_blank">{{ url.site_name }}</a></td>
+      <td> </td>
+      <td><div class="text-right"><button type="submit" name="delete_id" class="aiueo" value="{{ url.id }}"><img src="{% static "url/delete.png" %}"></div></td>
+    </tr>
+  </tbody>
+  {% endfor %}
+  {% csrf_token %}
+</form>
+</table>
+-->
+<form method="POST" action="{% url 'url:delete_url' %}">
+<div class="text-right" style="margin-top:40px;">
+<a href="{% url 'url:create_url' %}" class="btn btn-outline-primary">New</a>
+<button type="submit" class="btn btn-outline-danger" name="delete_id" value={{ subclass.id }} style="">Delete</button>
+</div>
+<section class="category-lists">
+  <div class="category-list-top">
+    <ul>
+      <li class="list-top1"><a href="{% url 'url:index' %}"><img src="{% static "url/folder.png" %}"></a></li>
+      <li class="list-top2"><strong>{{ title_name }}</strong></li>
+      <li class="list-top3"><a href="{% url 'url:create_url' %}"><!--<img src="{% static "url/plus.png" %}"></a> --></li>
+    </ul>
+  </div>
+
+  <div class="categories">
+    <ul>
+    {% for url in url_list %}
+    <!--
+    <li class="folder-img"><img src="{% static "url/link.png" %}" ></li>
+    <li class="category-title"><a href="{{ url.site }}" target="_blank">{{ url.site_name }}</a></li>
+    <li class="delete-img"><div class="text-right"><button type="submit" name="delete_id" class="aiueo" value="{{ url.id }}"><img src="{% static "url/delete.png" %}"></div></li>
+-->
+      <li class="folder-img"><img src="{% static "url/link.png" %}" ></li>
+      <li class="category-title"><a href="{{ url.site }}" style="text-decoration:none;" target="_blank">{{ url.site_name }}</a></li>
+      <!--<li class="delete-img"><button type="submit" name="delete_id" class="aiueo" value={{ subclass.id }}><img src="{% static "url/delete.png" %}"></li>-->
+      <li class="delete-img">
+        <div class="checkbox">
+          <label>
+            <input type=checkbox name="delete_id" value={{ url.id }}>
+          </label>
+        </div>
+      </li>
+
+
+    {% endfor %}
+    </ul>
+
+
+  </div>
+</section>
+{% csrf_token %}
+</form>
+{% endblock %}

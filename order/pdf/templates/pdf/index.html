@@ -1,0 +1,22 @@
+{% extends 'url/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="text-right" style="margin-top:40px;">
+<a class="btn btn-outline-primary" href="{% url 'pdf:create_pdf' %}"　style="color:#222; text-decoration:underline;">New</a>
+</div>
+{% for pdf in pdfs %}
+<section>
+  <div class="make-card">
+    <ul>
+      <li class="make-card-image"><!--<a href="{{ pdf.pdf }}">--><img src="{% static 'pdf/pdf.png' %}" alt="Card image cap" ><object data="{{ pdf.upload.url }}" type="application/pdf"
+width="100px" height="100px"></object></li>
+      <li class="make-card-title mt-3"><h3>{{ pdf.title }}</h3></li>
+   </ul>
+  </div>
+</section>
+
+
+{% endfor %}
+{% endblock %}

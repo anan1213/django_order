@@ -1,0 +1,22 @@
+{% extends "url/base.html" %}
+{% block content %}
+{% load widget_tweaks %}
+
+<form action="" method="POST" enctype="='multipart/form-data'">
+  <div class="table mt-xl-5">
+    <ul class="list-group">
+      <li class="list-group-item" bg-dark text-white>タイトル</li>
+      <li class="list-group-item">{{ form.title }}</li>
+      <li class="list-group-item" bg-dark text-white>URL</li>
+      <li class="list-group-item">{{ form.pdf }}</li>
+    </ul>
+  </div>
+  <div class="text-right">
+  <button type="submit" class="btn btn-outline-dark" >送信</button>
+</div>
+  {% csrf_token %}
+</form>
+
+
+
+{% endblock %}

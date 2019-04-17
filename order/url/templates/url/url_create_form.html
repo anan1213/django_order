@@ -1,0 +1,24 @@
+{% extends "url/base.html" %}
+{% block content %}
+{% load widget_tweaks %}
+<h1 class="mt-5">ADD URL</h1>
+<form action="" method="POST">
+  <div class="table mt-xl-5">
+    <ul class="list-group">
+      <li class="list-group-item" bg-dark text-white>タイトル</li>
+      <li class="list-group-item">{{ form.site_name }}</li>
+      <li class="list-group-item" bg-dark text-white>URL</li>
+      <li class="list-group-item">{{ form.site }}</li>
+      <li class="list-group-item" bg-dark text-white>カテゴリー</li>
+      <li class="list-group-item">{{ form.subclass|add_class:"form-control" }}</li>
+    </ul>
+  </div>
+  <div class="text-right">
+  <button type="submit" class="btn btn-outline-dark" >送信</button>
+</div>
+  {% csrf_token %}
+</form>
+
+
+
+{% endblock %}
